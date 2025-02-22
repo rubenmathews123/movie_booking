@@ -1,0 +1,33 @@
+{% extends 'bookings/base.html' %}
+
+{% block title %}Movies{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center text-primary fw-bold">🎬 Available Movies</h2>
+
+    <!-- Bootstrap Grid with 5 columns per row -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 justify-content-center">
+        {% for movie in movies %}
+            <div class="col d-flex align-items-stretch">
+                <div class="card mb-4 shadow-lg p-2 bg-white rounded">
+                    {% if movie.poster_url %}
+                        <img src="{{ movie.poster_url }}" class="card-img-top movie-img" alt="{{ movie.title }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/300x450?text=No+Image" class="card-img-top movie-img" alt="No Poster">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">{{ movie.title }}</h5>
+                        <p class="card-text">{{ movie.description|truncatewords:20 }}</p>
+                        <p><strong>Release Date:</strong> {{ movie.release_date|date:"M. d, Y" }}</p>
+                        <p><strong>Duration:</strong> {{ movie.duration }} mins</p>
+                        <div class="mt-auto">
+                            <a href="{% url 'book_seat' movie.id %}" class="btn btn-primary w-100">🎟 Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

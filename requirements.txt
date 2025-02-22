@@ -1,0 +1,4 @@
+Django==5.1.6
+djangorestframework==3.14.0
+django-filter==23.2
+sqlite3==3.35.5

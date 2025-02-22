@@ -1,0 +1,139 @@
+{% extends 'bookings/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+    /* 📺 Fullscreen Hero Section */
+    .hero-section {
+        position: relative;
+        height: 90vh;
+        background: url('https://source.unsplash.com/1600x900/?cinema,netflix,movie') no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* 🎭 Dark Overlay */
+    .hero-section .overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    /* 🎬 Title Effects */
+    .hero-section h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: #ffcc00;
+        text-shadow: 3px 3px 12px rgba(255, 200, 0, 0.7);
+        animation: fadeInDown 1s ease-in-out;
+    }
+
+    /* 🟠 Netflix-Style Buttons */
+    .btn-movie {
+        background: linear-gradient(to right, #e50914, #b20710);
+        padding: 14px 24px;
+        font-size: 1.3rem;
+        font-weight: bold;
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0px 5px 15px rgba(255, 0, 0, 0.5);
+    }
+
+    .btn-movie:hover {
+        transform: scale(1.1);
+        background: #ff3333;
+    }
+
+    /* 🎥 Movie Card Styles */
+    .movie-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .movie-card:hover {
+        transform: scale(1.1);
+        box-shadow: 0px 10px 30px rgba(255, 0, 0, 0.5);
+    }
+
+    /* 🔥 Movie Overlay Hover */
+    .movie-card .overlay {
+        position: absolute;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        padding: 10px;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+    }
+
+    .movie-card:hover .overlay {
+        opacity: 1;
+    }
+
+    /* 🎬 Netflix-Style Scroll */
+    .movie-slider {
+        display: flex;
+        overflow-x: auto;
+        padding: 20px;
+        scroll-behavior: smooth;
+    }
+
+    .movie-slider::-webkit-scrollbar {
+        display: none;
+    }
+
+    .movie-slider img {
+        width: 200px;
+        margin-right: 15px;
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+
+    .movie-slider img:hover {
+        transform: scale(1.1);
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<!-- 🎭 Hero Section -->
+<div class="hero-section">
+    <div class="overlay">
+        <h1>🎬 Welcome to Movie Theater Booking</h1>
+        <p class="lead text-white">Book your favourite movies effortlessly!</p>
+        <a href="{% url 'movie_list' %}" class="btn-movie">🍿 View Movies</a>
+    </div>
+</div>
+
+<!-- 🔥 Trending Movies Carousel -->
+<div class="container my-5">
+    <h2 class="text-white">🔥 Trending Now</h2>
+    <div class="movie-slider">
+        <img src="https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg" alt="Forrest Gump">
+        <img src="https://upload.wikimedia.org/wikipedia/en/8/86/Movie_poster_the_terminal.jpg" alt="The Terminal">
+        <img src="https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg" alt="The Shawshank Redemption">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/04/Ode_to_My_Father.jpg" alt="Ode to My Father">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/ac/Saving_Private_Ryan_poster.jpg" alt="
+        Saving Private Ryan">
+    </div>
+</div>
+
+
+{% endblock %}

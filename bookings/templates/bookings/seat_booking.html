@@ -1,0 +1,25 @@
+{% extends 'bookings/base.html' %}
+
+{% block title %}Seat Booking{% endblock %}
+
+{% block content %}
+<div class="container mt-4 text-center">
+    <h2 class="text-primary fw-bold">💺 Select a Seat</h2>
+
+    <!-- Movie Screen -->
+    <div class="screen">🎬 Movie Screen</div>
+
+    <!-- Seat Layout -->
+    <div class="seat-layout">
+        {% for seat in seats %}
+            <div class="seat {% if seat.is_booked %} booked {% else %} available {% endif %}">
+                {% if not seat.is_booked %}
+                    <a href="{% url 'confirm_booking' seat.id %}" class="seat-link">{{ seat.seat_number }}</a>
+                {% else %}
+                    <span class="booked-seat">{{ seat.seat_number }}</span>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

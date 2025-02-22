@@ -1,0 +1,144 @@
+/* Hero Section */
+.hero-section {
+    background: url('https://source.unsplash.com/1600x900/?cinema,movie') no-repeat center center/cover;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.hidden {
+    display: none !important;
+}
+
+.hero-section .overlay {
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Buttons */
+.btn-lg {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+}
+
+/* API Buttons */
+.btn-outline-dark {
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+/* Section Headers */
+h2 {
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+/* Movie Card Styling */
+.card img.movie-img {
+    height: 350px; /* Adjust this height for better display */
+    object-fit: cover; /* Ensures images look good */
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card img.movie-img {
+    height: 400px; /* Ensures all images are the same height */
+    object-fit: cover; /* Crops images nicely */
+}
+
+.mt-auto {
+    margin-top: auto; /* Pushes "Book Now" button to bottom */
+}
+
+/* Movie Screen */
+.screen {
+    width: 80%;
+    background: #222;
+    color: white;
+    padding: 10px;
+    margin: 10px auto;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Seat Layout Grid */
+.seat-layout {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* Adjust based on theater size */
+    gap: 10px;
+    justify-content: center;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Individual Seat */
+.seat {
+    width: 50px;
+    height: 50px;
+    background: #28a745;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Booked Seat */
+.seat.booked {
+    background: #dc3545;
+    cursor: not-allowed;
+}
+
+/* Seat Hover Effect */
+.seat:hover {
+    transform: scale(1.1);
+}
+
+/* Seat Link */
+.seat a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Booked Seat Text */
+.booked-seat {
+    color: white;
+    font-weight: bold;
+}
+
+/* Default Light Mode */
+body {
+    background-color: white;
+    color: black;
+    transition: background 0.3s, color 0.3s;
+}
+/* Default Light Mode */
+body {
+    background-color: white;
+    color: black;
+    transition: background 0.3s, color 0.3s;
+}
+
