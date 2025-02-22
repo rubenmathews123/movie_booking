@@ -2,3 +2,4 @@ Django
 djangorestframework
 django-filter
 gunicorn
+drf-yasg
