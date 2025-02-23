@@ -42,8 +42,8 @@ h2 {
 
 /* Movie Card Styling */
 .card img.movie-img {
-    height: 350px; /* Adjust this height for better display */
-    object-fit: cover; /* Ensures images look good */
+    height: 350px; 
+    object-fit: cover; 
 }
 .card {
     display: flex;
@@ -58,15 +58,14 @@ h2 {
 }
 
 .card img.movie-img {
-    height: 400px; /* Ensures all images are the same height */
-    object-fit: cover; /* Crops images nicely */
+    height: 400px; 
+    object-fit: cover; 
 }
 
 .mt-auto {
-    margin-top: auto; /* Pushes "Book Now" button to bottom */
+    margin-top: auto; 
 }
 
-/* Movie Screen */
 .screen {
     width: 80%;
     background: #222;

@@ -3,31 +3,94 @@
 {% block title %}Movies{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2 class="text-center text-primary fw-bold">🎬 Available Movies</h2>
+<!-- Black Background Container -->
+<div class="movie-container">
+    <div class="container">
+        <h2 class="text-center fw-bold text-light">🎬 Now Showing</h2>
 
-    <!-- Bootstrap Grid with 5 columns per row -->
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 justify-content-center">
-        {% for movie in movies %}
-            <div class="col d-flex align-items-stretch">
-                <div class="card mb-4 shadow-lg p-2 bg-white rounded">
-                    {% if movie.poster_url %}
-                        <img src="{{ movie.poster_url }}" class="card-img-top movie-img" alt="{{ movie.title }}">
-                    {% else %}
-                        <img src="https://via.placeholder.com/300x450?text=No+Image" class="card-img-top movie-img" alt="No Poster">
-                    {% endif %}
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">{{ movie.title }}</h5>
-                        <p class="card-text">{{ movie.description|truncatewords:20 }}</p>
-                        <p><strong>Release Date:</strong> {{ movie.release_date|date:"M. d, Y" }}</p>
-                        <p><strong>Duration:</strong> {{ movie.duration }} mins</p>
-                        <div class="mt-auto">
-                            <a href="{% url 'book_seat' movie.id %}" class="btn btn-primary w-100">🎟 Book Now</a>
+        <!-- Movie Grid -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center">
+            {% for movie in movies %}
+                <div class="col d-flex align-items-stretch">
+                    <div class="card movie-card">
+                        {% if movie.poster_url %}
+                            <img src="{{ movie.poster_url }}" class="card-img-top movie-img" alt="{{ movie.title }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/300x450?text=No+Image" class="card-img-top movie-img" alt="No Poster">
+                        {% endif %}
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">{{ movie.title }}</h5>
+                            <p class="card-text">{{ movie.description|truncatewords:20 }}</p>
+                            <p><strong>Release:</strong> {{ movie.release_date|date:"M. d, Y" }}</p>
+                            <p><strong>Duration:</strong> {{ movie.duration }} mins</p>
+                            <div class="mt-auto">
+                                <a href="{% url 'book_seat' movie.id %}" class="btn btn-gradient w-100">🎟 Book Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </div>
+
+<!-- CSS Styles -->
+<style>
+    /* Full Black Background */
+    .movie-container {
+        background: black;
+        min-height: 100vh;
+        padding-bottom: 50px;
+    }
+
+    /* Movie Card */
+    .movie-card {
+        background: rgba(0, 0, 0, 0.9); /* Dark transparent background */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .movie-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Movie Image */
+    .movie-img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
+    /* Movie Title */
+    .card-title {
+        color: white;
+    }
+
+    /* Movie Text */
+    .card-text, p {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Gradient Button */
+    .btn-gradient {
+        background: linear-gradient(90deg, #ff8a00, #da1b60);
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 10px;
+        transition: all 0.3s ease-in-out;
+        border: none;
+    }
+
+    .btn-gradient:hover {
+        background: linear-gradient(90deg, #da1b60, #ff8a00);
+        color: white;
+        transform: scale(1.05);
+    }
+</style>
 {% endblock %}

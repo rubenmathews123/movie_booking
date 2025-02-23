@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">🏠 Home</a>
+                        <a class="nav-link" href="{% url 'home' %}"> Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'movie_list' %}">🎞 Movies</a>
@@ -33,17 +33,17 @@
                     
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'booking_history' %}">📅 My Bookings</a>
+                            <a class="nav-link" href="{% url 'booking_history' %}">Bookings</a>
                         </li>
                         <li class="nav-item">
                                 <form method="post" action="{% url 'logout' %}">
                                     {% csrf_token %}
-                                    <button type="submit" class="nav-link btn btn-danger text-light">🚪 Logout</button>
+                                    <button type="submit" class="nav-link btn btn-danger text-light">Logout</button>
                                 </form>
                             </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link btn btn-primary text-light" href="{% url 'login' %}">🔑 Login</a>
+                            <a class="nav-link btn btn-primary text-light" href="{% url 'login' %}"> Login</a>
                         </li>
                     {% endif %}
     
