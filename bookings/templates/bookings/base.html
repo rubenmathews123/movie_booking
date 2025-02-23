@@ -36,8 +36,11 @@
                             <a class="nav-link" href="{% url 'booking_history' %}">📅 My Bookings</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-danger text-light" href="{% url 'logout' %}?next={% url 'home' %}">🚪 Logout</a>
-                        </li>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="nav-link btn btn-danger text-light">🚪 Logout</button>
+                                </form>
+                            </li>
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link btn btn-primary text-light" href="{% url 'login' %}">🔑 Login</a>
