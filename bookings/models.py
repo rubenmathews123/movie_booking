@@ -17,16 +17,10 @@ class Seat(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('seat_number', 'movie')  # Ensure unique seat per movie
-
-    def __str__(self):
-        return f"{self.movie.title} - Seat {self.seat_number}"
+        unique_together = ('seat_number', 'movie')
 
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    seat = models.ForeignKey(Seat, on_delete=models.CASCADE)
+    seat = models.OneToOneField(Seat, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.user.username} - {self.movie.title} - Seat {self.seat.seat_number}"

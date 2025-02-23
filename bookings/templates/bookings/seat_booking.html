@@ -11,15 +11,92 @@
 
     <!-- Seat Layout -->
     <div class="seat-layout">
-        {% for seat in seats %}
-            <div class="seat {% if seat.is_booked %} booked {% else %} available {% endif %}">
-                {% if not seat.is_booked %}
-                    <a href="{% url 'confirm_booking' seat.id %}" class="seat-link">{{ seat.seat_number }}</a>
-                {% else %}
-                    <span class="booked-seat">{{ seat.seat_number }}</span>
-                {% endif %}
+        {% for row in seat_rows %}
+            <div class="seat-row">
+                {% for seat in row %}
+                    <div class="seat {% if seat.is_booked %} booked {% else %} available {% endif %}">
+                        {% if not seat.is_booked %}
+                            <a href="{% url 'confirm_booking' seat.id %}" class="seat-link"
+                            onclick="openModal('{{ seat.seat_number }}')">{{ seat.seat_number }}</a>
+                        {% else %}
+                            <span class="booked-seat">{{ seat.seat_number }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
         {% endfor %}
     </div>
 </div>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Seat Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                🎉 Thank you for booking! Your seat <span id="seatNumber"></span> is confirmed.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS -->
+<style>
+    .seat-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .seat-row {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    .seat {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+    }
+    .available {
+        background-color: #4CAF50; /* Green for available seats */
+        color: white;
+    }
+    .booked {
+        background-color: #FF0000; /* Red for booked seats */
+        color: white;
+        cursor: not-allowed;
+    }
+    .seat-link {
+        text-decoration: none;
+        color: white;
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 40px;
+    }
+</style>
+
+<!-- JavaScript for Modal -->
+<script>
+    function openModal(seatNumber) {
+        document.getElementById("seatNumber").innerText = seatNumber;
+        var bookingModal = new bootstrap.Modal(document.getElementById("bookingModal"));
+        bookingModal.show();
+    }
+</script>
+
 {% endblock %}
