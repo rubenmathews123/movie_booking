@@ -3,27 +3,80 @@
 {% block title %}Booking History{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="fw-bold text-center mb-4">Your Booking History</h2>
+<!-- Dark Background -->
+<div class="booking-container">
+    <div class="container">
+        <h2 class="fw-bold text-center text-light mb-4">Your Booking History</h2>
 
-    {% if bookings %}
-        <div class="row justify-content-center">
-            {% for booking in bookings %}
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card shadow-sm border-0">
-                        <div class="card-body">
-                            <h5 class="card-title text-primary fw-bold">{{ booking.movie.title }}</h5>
-                            <p class="card-text mb-1"><strong>Seat:</strong> {{ booking.seat.seat_number }}</p>
-                            <p class="card-text text-muted"><i class="bi bi-clock"></i> {{ booking.timestamp }}</p>
+        {% if bookings %}
+            <div class="row justify-content-center">
+                {% for booking in bookings %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card booking-card">
+                            <div class="card-body">
+                                <h5 class="card-title text-warning fw-bold">{{ booking.movie.title }}</h5>
+                                <p class="card-text mb-1"><strong>Seat:</strong> {{ booking.seat.seat_number }}</p>
+                                <p class="booking-date">{{ booking.timestamp }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <div class="alert alert-info text-center" role="alert">
-            <i class="bi bi-calendar-x"></i> No bookings found.
-        </div>
-    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-dark text-center text-light" role="alert">
+                No bookings found.
+            </div>
+        {% endif %}
+    </div>
 </div>
+
+<!-- CSS Styles -->
+<style>
+    /* Full Black Background */
+    .booking-container {
+        background: black;
+        min-height: 100vh;
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+    html, body {
+        background: black !important;
+    }
+    /* Booking Card */
+    .booking-card {
+        background: rgba(255, 255, 255, 0.1); /* Dark semi-transparent */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+        padding: 20px;
+    }
+
+    .booking-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Booking Title */
+    .card-title {
+        color: #f5c518;
+    }
+
+    /* Booking Details */
+    .card-text {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Date Styling - Make it Visible */
+    .booking-date {
+        color: rgba(255, 255, 255, 0.6); /* Light gray for readability */
+        font-size: 14px;
+    }
+
+    /* No Bookings Alert */
+    .alert-dark {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+</style>
 {% endblock %}
