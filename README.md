@@ -4,6 +4,10 @@ password: ruben <br /> <br />
 # Tribe Movies <br />
 ### Where movies meet passion
 
+# Live Link [https://movie-booking-fspg.onrender.com/](https://movie-booking-fspg.onrender.com/)
+### login as super user here
+
+
 🚀 Features <br />
 ✅ Browse available movies and showtimes <br />
 ✅ Book movie tickets online <br />
