@@ -26,5 +26,6 @@ urlpatterns = [
     # API Endpoints (JSON)
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),  # ✅ Login URL
     path('accounts/signup/', signup, name='signup'),
+    path("accounts/logout/", auth_views.LogoutView.as_view(), name="logout"),
     path('api/', include(router.urls)),  # API routes
 ]
