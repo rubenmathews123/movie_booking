@@ -31,6 +31,8 @@ ALLOWED_HOSTS = [
     'localhost',
     'sahil12216.onrender.com'
 ]
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Application definition
